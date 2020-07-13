@@ -1,0 +1,231 @@
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+
+</head>
+<body>
+	<style type="text/css">
+		body{
+			background-color: lavender;
+			margin-top: 0px;
+		}
+		.an{
+			position: absolute;
+font-size: 250%;
+		}
+#MainGolosing{
+	margin: 0 auto;
+	width: 45%;
+	height: 49%;
+
+}
+
+#MainGolosing img{
+border-radius: 10px 10px 0px 0px;
+
+}
+#yes{
+
+	display: flex;;
+	
+	width: 45%;
+	margin:3px auto;
+font-size: 350%;
+	height: 25%;
+	align-items: center;
+	background-color: white;
+}
+
+#no{
+
+	display: flex;;
+	
+	width: 44.4%;
+
+font-size: 350%;
+	height: 25%;
+	align-items: center;
+	background-color: white;
+	position: fixed;
+	border-radius: 0px 0px 10px 10px;
+}
+
+.box{
+	margin-left: 9%;
+	border:6px solid black;
+	width: 15%;
+	height:41%;
+}
+#no .box{
+	margin-left: 12.5%;
+	border:6px solid black;
+	width: 9%;
+	height:33%;
+}
+#no .box:hover{
+	
+}
+#thankyou{
+	color:red;
+	font-size: 450%;
+	margin: 3px auto;
+	width: 45%;
+	height: 100%;
+}
+	</style>
+	<script src="Containers%20warface_files/jquery-1.js"></script>
+<script src="Containers%20warface_files/jquery-ui.js"></script>
+<div id="gamer">
+	<div id ="MainGolosing">
+		<img src="http://gym209.spb.ru/media/k2/items/cache/1b022937cdf6173682fa7da43824d5ff_Generic.jpg" width="100%" height ="100%">
+	
+	</div>
+	<div id="yes" ><div class="box"  onmouseover="starting()" onclick="gameOver1()" ></div><a  onmouseover="starting()" style="margin-left: 2%;">Да</a>
+</div>
+<div id="no"  onmouseover="starting()"><div class="box"  onmouseover="starting()"onclick="gameOver()"></div><a onmouseover="starting()" style="margin-left: 2%;">Против</a>
+</div>
+</div>
+<div id="thankyou" style="display: none;">
+	Спасибо за твой голос!<br/>
+<img src="https://www.lindelof.nu/wp-content/uploads/2016/11/Putin-tummen-upp.png" width="100%" >
+</div>
+	
+<script type="text/javascript">
+	alert("Здравствуй, меня зовут Андрюшка я оппозиционер,и твоя задача проголосовать против поправок в конституцию!!!")
+		var maino=0;
+		var sx=window.innerWidth/100*27.8,sy=window.innerHeight/100*74;
+	var bo =[window.innerWidth/100*27.8,window.innerHeight/100*74];
+	var gr = [0,0];
+	var cen=true;
+	function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+function starting(){
+	start=true;
+}
+var gameOverP = false;
+	function inreas(x,y){
+
+increase.style.left=x+'px';
+increase.style.top=y+'px';
+//increase.style="margin-left:"+x+"px;"+"margin-top:"+y+"px;";
+	}
+
+	var increase = document.getElementById("no");
+	
+	let animation = setInterval(function() {
+		if(cen==true){
+   inreas(bo[0],bo[1]);
+}
+}, 5); 
+var move=false;
+var w = window.innerWidth,h=window.innerHeight;
+var x = [w/100*5,w/100*80,w/100*5,w/100*8,w/100*60];
+
+var y = [h/100*getRandomInt(15),h/100*3,h/100*50,h/100*85,h/100*65];
+var dx;
+
+var xx=w/100*25;
+	var yy = h/100*50;
+
+
+var start=false;
+function moves(){
+	if(gameOverP ==false){
+		if(start==true){
+if(move==true){
+
+console.log(bo[0].toFixed())
+console.log(bo[1].toFixed())
+//if(bo[0]>x[dx]){
+bo[0]-=(bo[0]-x[dx])*0.65;
+//	bo[0]+=(bo[0]-x[dx])*0.25;
+//}
+ // if(bo[1]>y[dx]){
+
+bo[1]-=(bo[1]-y[dx])*0.65;
+ // }else{
+ // 	bo[1]+=(bo[1]-y[dx])*0.25;
+  //}
+
+  if(bo[0].toFixed()==x[dx].toFixed() && bo[1].toFixed()==y[dx].toFixed()){
+  	move=false;
+  }
+}else{
+	if(maino<=23){
+		maino++;
+	
+	console.log("no")
+	dx=func();
+move=true;
+}
+else{
+	
+bo[0]-=(bo[0]-xx)*0.4;
+bo[1]-=(bo[1]-yy)*0.4;
+
+
+}
+
+}
+}
+}
+}
+
+	function func(){
+		var ddx=getRandomInt(x.length);
+		console.log(ddx)
+	if(ddx==dx){
+		return func();
+	}else{
+		return ddx;
+	}
+		 
+	}
+	let timer = setInterval(function() {
+moves();
+
+}, 55); 
+	function radingr(gra){
+		return (gra*Math.PI)/(180);
+	}
+function gameOver(){
+	if(move==false && bo[0].toFixed()==xx.toFixed() &&bo[1].toFixed()==yy.toFixed()){
+gameOverP=true;
+		bo[0]=sx;
+		bo[1]=sy;
+inreas(bo[0],bo[1])
+document.getElementsByClassName("box")[0].style="background-color:green;"
+setTimeout("gameOver1()",50);
+
+	//alert("Вы проиграли,ты слабая личность.");
+}
+}
+
+
+
+function gameOver1(){
+
+	alert("Ты проиграл")
+
+document.getElementById("gamer").style="display:none;";
+document.getElementById("thankyou").style="display:block;";
+setTimeout("rerun()",4000);
+
+
+}
+function rerun(){
+	start=false;
+	gameOverP=false;
+	maino=0;
+	document.getElementsByClassName("box")[0].style="background-color:white;"
+
+document.getElementById("gamer").style="display:block;";
+document.getElementById("thankyou").style="display:none;";
+}
+//for(var i = 0;i<50;i++)
+//center(i);
+</script>
+</body>
+</html>
