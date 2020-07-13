@@ -1,0 +1,89 @@
+<html>
+
+<head>
+	<title></title>
+
+</head>
+<body>
+	<style type="text/css">
+		.an{
+			position: absolute;
+font-size: 250%;
+		}
+
+
+	</style>
+	<script src="Containers%20warface_files/jquery-1.js"></script>
+<script src="Containers%20warface_files/jquery-ui.js"></script>
+
+	<div id="animate" style="position: absolute;"></div>
+<script type="text/javascript">
+	function center(icycle){
+		var divel="<div id='l"+icycle+"' class='an'>&#9733;</div>";
+		$('#animate').append(divel);
+	var bo =[window.innerWidth/2,window.innerHeight/2];
+	var gr = [getRandomInt(360),getRandomInt(360)];
+	var cen=true;
+	function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+	function inreas(x,y){
+
+increase.style.left=x+'px';
+increase.style.top=y+'px';
+	}
+
+	var increase = document.getElementById("l"+icycle);
+	
+	let animation = setInterval(function() {
+		if(cen){
+   inreas(bo[0],bo[1]);
+}
+}, 5); 
+
+
+	let timer = setInterval(function() {
+		if(cen){
+			gr[0]+=0.5;
+		bo[0]+=4*Math.cos(radingr(gr[0]));
+		bo[1]+=4*Math.sin(radingr(gr[0]));
+	//	console.log(bo[0])
+		if(bo[0]>=window.innerWidth){
+			bo[0] = window.innerWidth/2;
+			bo[1] = window.innerHeight/2;
+			
+			gr = [getRandomInt(360),getRandomInt(360)];
+		}
+
+		if(bo[1]>=window.innerHeight){
+			bo[0] = window.innerWidth/2;
+			
+			bo[1] = window.innerHeight/2;
+			gr = [getRandomInt(360),getRandomInt(360)];
+		}
+
+		if(bo[0]<=0){
+			bo[0] = window.innerWidth/2;
+			bo[1] = window.innerHeight/2;
+			
+			gr = [getRandomInt(360),getRandomInt(360)];
+		}
+
+		if(bo[1]<=0){
+			bo[0] = window.innerWidth/2;
+			
+			bo[1] = window.innerHeight/2;
+			gr = [getRandomInt(360),getRandomInt(360)];
+		}
+	}
+  
+}, 20); 
+	function radingr(gra){
+		return (gra*Math.PI)/(180);
+	}
+}
+for(var i = 0;i<50;i++)
+center(i);
+</script>
+</body>
+</html>
