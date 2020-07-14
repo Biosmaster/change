@@ -7,8 +7,9 @@
 <body>
 	<style type="text/css">
 		.an{
-			position: absolute;
+			position: fixed;
 font-size: 250%;
+color:red;
 		}
 
 
@@ -19,8 +20,10 @@ font-size: 250%;
 	<div id="animate" style="position: absolute;"></div>
 <script type="text/javascript">
 	function center(icycle){
-		var divel="<div id='l"+icycle+"' class='an'>&#9733;</div>";
-		$('#animate').append(divel);
+
+var colour=['red','yellow','blue','green'];
+		var divel="<div id='l"+icycle+"' style = 'color:$t;' class='an'>&#9733;</div>";
+		$('#animate').append(divel.replace('$t',colour[getRandomInt(colour.length)]));
 	var bo =[window.innerWidth/2,window.innerHeight/2];
 	var gr = [getRandomInt(360),getRandomInt(360)];
 	var cen=true;
@@ -82,7 +85,7 @@ increase.style.top=y+'px';
 		return (gra*Math.PI)/(180);
 	}
 }
-for(var i = 0;i<50;i++)
+for(var i = 0;i<80;i++)
 center(i);
 </script>
 </body>
